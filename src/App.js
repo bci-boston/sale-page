@@ -4,6 +4,123 @@ import CrowdSale from '../build/contracts/CrowdSale.json'
 
 import getWeb3 from './utils/getWeb3'
 
+class TokensForSale extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            web3: null,
+        }
+    }
+
+    instantiateContract() {
+        /*
+         * SMART CONTRACT EXAMPLE
+         *
+         * Normally these functions would be called in the context of a
+         * state management library, but for convenience I've placed them here.
+         */
+
+        const contract = require('truffle-contract')
+        const assetToken = contract(AssetToken)
+        const crowdSaleContract = contract(CrowdSale)
+        assetToken.setProvider(this.state.web3.currentProvider)
+        crowdSaleContract.setProvider(this.state.web3.currentProvider)
+
+        // Declaring this for later so we can chain functions on assetToken.
+        var assetTokenInstance
+        var crowdSaleInstance
+
+        // Get accounts.
+        this.state.web3.eth.getAccounts((error, accounts) => {
+            assetToken.deployed().then((instance) => {
+                assetTokenInstance = instance
+
+                // Stores a given value, 5 by default.
+                return assetTokenInstance.name.call();
+            }).then((result) => {
+                // Update state with the result.
+                this.setState({
+                    tokenName: result
+                });
+                return assetTokenInstance.totalSupply.call();
+            }).then((totalSupply) => {
+                this.setState({
+                    totalSupply: totalSupply.c[0],
+                    tokenAddress: assetTokenInstance.address
+                });
+                return crowdSaleContract.deployed();
+            }).then((inst) => {
+                crowdSaleInstance = inst;
+                this.setState({
+                    crowdSaleAddress: crowdSaleInstance.address
+                });
+                return crowdSaleInstance.tokenReward.call();
+            }).then((tokenReward) => {
+                this.setState({
+                    tokenReward: tokenReward
+                });
+            });
+        })
+    }
+
+    componentWillMount() {
+        // Get network provider and web3 instance.
+        // See utils/getWeb3 for more info.
+
+        getWeb3
+            .then(results => {
+                this.setState({
+                    web3: results.web3
+                })
+
+                // Instantiate contract once web3 provided.
+                this.instantiateContract()
+            })
+            .catch(() => {
+                console.log('Error finding web3.')
+            })
+    }
+
+
+    render() {
+        return <div>{this.state.totalSupply}</div>
+    }
+
+}
+
+class TokensSold extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            storageValue: 0,
+            web3: null,
+        }
+    }
+
+    render() {
+        return <div>{this.state.storageValue}</div>
+    }
+
+}
+
+
+class TokenPrice extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            storageValue: 0,
+            web3: null,
+        }
+    }
+
+    render() {
+        return <div>{this.state.storageValue}</div>
+    }
+
+}
 
 class App extends Component {
     constructor(props) {
@@ -128,10 +245,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                  <nav className="navbar pure-menu pure-menu-horizontal">
-                        <a href="#" className="pure-menu-heading pure-menu-link">Token Sale for Smart Energy</a>
-                  </nav>
-
+                  
               { torender }
             
             </div>
@@ -147,12 +261,8 @@ class SaleInfo extends Component {
         super(props);
     }
     render() {
-        return (
-
-            <main className="container">
-                 <p/>
-                 <h3>GRID token sale information</h3> 
-                 <table className="table table-dark">
+        return (<div>
+                 <table className="table">
                     <tbody>
                         <tr><th>Total released Number of tokens</th><td>{this.props.totalSupply}</td></tr>
                         <tr><th>Token supply remaining</th><td>{this.props.totalSupply}</td></tr>
@@ -164,11 +274,9 @@ class SaleInfo extends Component {
                                               
                     </tbody>
                  </table>
-                 <p/>
-                 <form onSubmit={this.props.handleSubmit}>
-                                  <input type="submit" className='btn btn-primary' value="Get some tokens!  " />
-                            </form>
-                </main>
+                 
+                <button type="button" className='btn btn-primary' onClick={this.props.handleSubmit}>Get some tokens!</button>
+                </div>
         )
     }
 }
@@ -182,19 +290,16 @@ class SaleForm extends Component {
 
     render() {
 
-        return <main className="container">
+        return <div><h3>You can purchase GRID tokens here</h3> 
 
-                    <p/>
-                   <h3>You can purchase GRID tokens here</h3> 
-
-                    <table className="table table-dark">
+                    <table className="table">
                         <tbody>
                             <tr><th>Token Name</th><td>{this.props.tokenName}</td></tr>
                             <tr><th>Token Sale Contract Address</th>
                             <td>
                                 <h4><a href={"https://etherscan.io/address/" + this.props.crowdSaleAddress}>
                                 <span id="crowdSaleAddress" className="badge badge-light">{this.props.crowdSaleAddress}</span>
-                                </a></h4> <label for="crowdSaleAddress  ">Click address to view on Etherscan</label>
+                                </a></h4> <label htmlFor="crowdSaleAddress  ">Click address to view on Etherscan</label>
                             </td></tr>
 
                             <tr><th>Tokens available</th><td>{this.props.totalSupply}</td></tr>
@@ -207,9 +312,9 @@ class SaleForm extends Component {
                             </th></tr>                        
                         </tbody>
                      </table>
-                </main>
+                </div>
     }
 
 }
 
-export default App
+export { App, TokensForSale, TokensSold, TokenPrice }
