@@ -103,6 +103,11 @@ class App extends Component {
                 this.setState({
                     tokenReward: tokenReward
                 });
+                return crowdSaleInstance.tokensSold.call();
+            }).then((soldTokens) => {
+                this.setState({
+                    soldTokens: soldTokens.c[0]
+                });
             });
         })
     }
@@ -113,12 +118,14 @@ class App extends Component {
 
         if (this.state.submitted) {
             torender = <SaleActionView
+            soldTokens={this.state.soldTokens}
             totalSupply={this.state.totalSupply}
             handleBuy={this.handleBuy}
             crowdSaleAddress={this.state.crowdSaleAddress}
             />
         } else {
             torender = <SaleInfo
+            soldTokens={this.state.soldTokens}
             handleSubmit={this.handleSubmit}
             crowdSaleAddress={this.state.crowdSaleAddress}
             tokenName={this.state.tokenName}
@@ -150,7 +157,7 @@ class SaleInfo extends Component {
                             SunIntensity tokens for sale</p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
-                <p><span id="tokenssold" className="text-info"><div data-reactroot="">0</div></span><br/>
+                <p><span id="tokenssold" className="text-info"><div data-reactroot="">{this.props.soldTokens}</div></span><br/>
                             SunIntensity tokens sold</p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
@@ -158,7 +165,7 @@ class SaleInfo extends Component {
                             <span id="tokenprice" className="text-info"><div data-reactroot="">USD 1.50</div></span><br/>
                                     Price per SunIntensity token</p>
                 <p></p></div></div>
-                <p>Sale ends at block <span className="text-info ">[NUMBERS]</span>, approximately at Nov 13th 12pm EST. <span class="text-info ">[NUMBERS]</span> blocks remaining.</p>
+                <p>Sale ends at block <span className="text-info ">[NUMBERS]</span>, approximately at Nov 13th 12pm EST. <span className="text-info ">[NUMBERS]</span> blocks remaining.</p>
                 <div className="row ">
                 <p>        <button onClick={this.props.handleSubmit} className="btn btn-info btn-lg col-sm-4 col-sm-offset-4 ">Buy Tokens!</button></p></div></div>
         );

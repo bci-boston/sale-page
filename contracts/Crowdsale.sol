@@ -22,6 +22,7 @@ contract CrowdSale {
     
     
     uint public totalRaised;
+    uint public tokensSold;
     uint public currentBalance;
     uint public deadline;
     uint public completedAt;
@@ -121,6 +122,9 @@ contract CrowdSale {
             );
 
         totalRaised += msg.value;
+        
+        tokensSold = totalRaised/priceInWei;
+
         currentBalance = totalRaised;
 
 
