@@ -177,8 +177,9 @@ class SaleActionView extends Component {
                             SunIntensity tokens for sale</p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
-                <p><span id="tokenssold" className="text-info"><div data-reactroot="">{this.props.crowdSaleAddress}</div></span><br/>
-                            SunIntensity CrowdSale Address</p>
+                <p><span id="tokenssold" className="text-info"><div data-reactroot="">
+                <a href={"https://etherscan.io/address/" + this.props.crowdSaleAddress}>{this.props.crowdSaleAddress}</a></div></span><br/>
+                            SunIntensity CrowdSale Address<br/>Click to see on Etherscan</p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
                 <p>
