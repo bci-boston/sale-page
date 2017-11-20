@@ -1,0 +1,7 @@
+
+geth attach http://localhost:8546
+
+geth --fast --cache=1048 --testnet --unlock 0x515f27392ec44007f66aee2c33f3824aea2acb97 --rpc --rpcapi eth,net,web3,personal --rpccorsdomain * --rpcaddr localhost --rpcport 8546
+
+/Applications/Ethereum Wallet.app/Contents/MacOS/Ethereum Wallet --rpc http://localhost:8546
+

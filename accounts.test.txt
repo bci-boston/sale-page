@@ -1,0 +1,11 @@
+# For use with Ropsten testnet, not for production!
+
+
+Main coinbase: 0x515f27392Ec44007F66aeE2C33f3824Aea2acb97
+wallet:
+
+acc3: 0x9f36704e3e7EeabbF6dEE08684b67432bAA4deB4
+wallet:
+
+acc2: 0x4D3E1C98AF9690A532a63D5E9b502475eCcB786f
+wallet:

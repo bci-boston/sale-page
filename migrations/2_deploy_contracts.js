@@ -8,7 +8,7 @@ module.exports = function(deployer, networks, accounts) {
 console.log("Account being used as admin " + accounts[0]);
 
 // Create assetToken with initialsupply, and assign to accounts[0] as owner account
-deployer.deploy(AssetToken, 90000000, "SunIntensityToken", "SUNINTENSITY", 18, accounts[0]).then(function() {
+deployer.deploy(AssetToken, 60000000, "SunIntensityToken", "SUNINTENSITY", 18, accounts[0]).then(function() {
     return deployer.deploy(CrowdSaleContract, 10, "http://sunintensity.com/crowdsale", accounts[0], 1000, 10000, AssetToken.address, 0.0047);
 
 /*
