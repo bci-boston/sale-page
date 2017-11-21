@@ -89,4 +89,58 @@ There are a few steps here:
     First delete the file 'built.react.package' on wordpress site, then upload this package to workdpress site via https://sunintensity.com/wp-admin/post.php?post=457&action=edit to replace that file
 
 
+## To attach a geth console against the remote ehtereum server on sunintensity
+
+    geth attach https://sunintensity.com/t/
+
+
+This will take you to a geth console from which you can access the ethereum setup
+
+
+## To connect Ethereum Wallet (Mist) app to the test server
+
+Start Mist with rpc argument like this
+
+    /Applications/Ethereum\ Wallet.app/Contents/MacOS/Ethereum\ Wallet --rpc https://sunintensity.com/t/
+
+Accept the warning dialog
+
+
+## How to get information from contract in a truffle console
+
+Truffle provides its own console to the ethereum ntwork. to use it type
+
+    truffle console --network=shareddev
+
+In the console, do these to fetch infrom from the contracts
+
+(See this for ref: https://blog.zeppelin.solutions/how-to-create-token-and-initial-coin-offering-contracts-using-truffle-openzeppelin-1b7a5dae99b6)
+
+```
+  
+  # get crowdsale contract
+  CrowdSale.deployed().then(inst => { crowdsale = inst })
+  
+  # get address of token in the crowdSale
+  crowdsale.tokenReward().then( addr => { tokenAddress = addr })
+
+  # get token at that address
+  coinInstance = AssetToken.at(tokenAddress)
+
+  # get balance of a certain account in that token
+  coinInstance.balanceOf(web3.eth.coinbase).then(b=>console.log(b.toString(10)))
+
+  # or just
+  coinInstance.balanceOf(web3.eth.coinbase)
+
+  # another account should initially have no balance
+  coinInstance.balanceOf(web3.eth.accounts[1]).then(b=>console.log(b.toString(10)))
+
+  # Now if you transfer tokens from one account to another
+  
+
+```
+
+
+
 
