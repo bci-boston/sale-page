@@ -20,6 +20,30 @@ then copy the build_webpack/ folder contents to a hosting location. The index.ht
 
 This will migrate all contracts as per migrations/ folder
 
+## To deploy contracts to the test network running on the sunintensity server
+
+Add something like this to truffle.js, make sure this points to the right address of the server running the testnet
+
+```
+        shareddev: {
+            host: "54.210.223.141",
+            port: 8545,
+            network_id: "*", // Match any network id
+            gas: 4000000
+        }
+```
+
+Then run, 
+    truffle migrate --network shareddev
+
+
+## To use the testrpc server setup on sunintensity for the web app
+
+We have setup a reverse proxy setup so that  https://sunintensity.com/t/ reaches the testrpc or other network running on port 8545 at that server. Either testrpc or geth can be run on port 8545 on that server to connect to ethereum
+
+in src/utils/getWeb3.js, ensure to use this url for the default case
+
+
 
 ## To migrate smart contracts to the testnet/Ropsten network
 
@@ -45,8 +69,7 @@ There are a few steps here:
             network_id: 3,
             host: '127.0.0.1',
             port: 8545,
-            gas: 4000000,
-            from: "0x515f27392ec44007f66aee2c33f3824aea2acb97"
+            gas: 4000000
         }
     }
 
@@ -62,5 +85,8 @@ There are a few steps here:
     cp build_webpack/static/js/main.16487dfb.js built.react.package.js 
 
     # check in the built package too, the build_webpack/ is in .gitignore so won't be committed
+
+    First delete the file 'built.react.package' on wordpress site, then upload this package to workdpress site via https://sunintensity.com/wp-admin/post.php?post=457&action=edit to replace that file
+
 
 
