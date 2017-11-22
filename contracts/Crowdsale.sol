@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.15;
 
 contract token { function transfer(address receiver, uint amount);
                  function mintToken(address target, uint mintedAmount);
@@ -33,18 +33,17 @@ contract CrowdSale {
     address public creator;
     address public beneficiary; 
     string campaignUrl;
-    byte constant version = 1;
 
     
     event LogFundingReceived(address addr, uint amount, uint currentTotal);
     event LogWinnerPaid(address winnerAddress);
-    event LogFundingSuccessful(uint totalRaised);
+    event LogFundingSuccessful(uint totalERaised);
     event LogFunderInitialized(
-        address creator,
-        address beneficiary,
+        address acreator,
+        address abeneficiary,
         string url,
         uint _fundingMaximumTargetInEther, 
-        uint256 deadline);
+        uint256 adeadline);
 
 
     modifier inState(State _state) {

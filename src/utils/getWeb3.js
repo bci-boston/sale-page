@@ -20,7 +20,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
             resolve(results)
         } else {
             // Fallback to localhost if no web3 injection.
-            // var provider = new Web3.providers.HttpProvider('http://localhost:8545')
+            //var provider = new Web3.providers.HttpProvider('http://localhost:8042')
 
             // this maps to 'http://54.210.223.141:8545' via reverse proxy
             var provider = new Web3.providers.HttpProvider('https://sunintensity.com/t/')

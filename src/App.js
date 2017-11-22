@@ -80,20 +80,22 @@ class App extends Component {
                 assetTokenInstance = instance
 
                 // Stores a given value, 5 by default.
-                return assetTokenInstance.name.call();
-            }).then((result) => {
-                // Update state with the result.
-                this.setState({
-                    tokenName: result
-                });
                 return assetTokenInstance.totalSupply.call();
-            }).then((totalSupply) => {
-                this.setState({
-                    totalSupply: totalSupply.c[0],
-                    tokenAddress: assetTokenInstance.address
-                });
-                return crowdSaleContract.deployed();
-            }).then((inst) => {
+            })
+                /*.then((result) => {
+                    // Update state with the result.
+                    this.setState({
+                        tokenName: result
+                    });
+                    return assetTokenInstance.totalSupply.call();
+                })*/
+                .then((totalSupply) => {
+                    this.setState({
+                        totalSupply: totalSupply.c[0],
+                        tokenAddress: assetTokenInstance.address
+                    });
+                    return crowdSaleContract.deployed();
+                }).then((inst) => {
                 crowdSaleInstance = inst;
                 this.setState({
                     crowdSaleAddress: crowdSaleInstance.address
@@ -102,6 +104,11 @@ class App extends Component {
             }).then((tokenReward) => {
                 this.setState({
                     tokenReward: tokenReward
+                });
+                return crowdSaleInstance.priceInWei.call();
+            }).then((priceInWei) => {
+                this.setState({
+                    priceInWei: priceInWei.c[0]
                 });
                 return crowdSaleInstance.tokensSold.call();
             }).then((soldTokens) => {
@@ -118,6 +125,7 @@ class App extends Component {
 
         if (this.state.submitted) {
             torender = <SaleActionView
+            priceInWei={this.state.priceInWei}
             soldTokens={this.state.soldTokens}
             totalSupply={this.state.totalSupply}
             handleBuy={this.handleBuy}
@@ -125,6 +133,7 @@ class App extends Component {
             />
         } else {
             torender = <SaleInfo
+            priceInWei={this.state.priceInWei}
             soldTokens={this.state.soldTokens}
             handleSubmit={this.handleSubmit}
             crowdSaleAddress={this.state.crowdSaleAddress}
@@ -162,7 +171,7 @@ class SaleInfo extends Component {
                 <p></p></div>
                 <div className="col-sm-4 text-center">
                 <p>
-                            <span id="tokenprice" className="text-info"><div data-reactroot="">USD 1.50</div></span><br/>
+                            <span id="tokenprice" className="text-info"><div data-reactroot="">{this.props.priceInWei} wei</div></span><br/>
                                     Price per SunIntensity token</p>
                 <p></p></div></div>
                 <p>Sale ends at block <span className="text-info ">[NUMBERS]</span>, approximately at Nov 13th 12pm EST. <span className="text-info ">[NUMBERS]</span> blocks remaining.</p>
@@ -185,15 +194,15 @@ class SaleActionView extends Component {
                 <p></p></div>
                 <div className="col-sm-4 text-center">
                 <p><span id="tokenssold" className="text-info"><div data-reactroot="">
-                <a href={"https://etherscan.io/address/" + this.props.crowdSaleAddress}>{this.props.crowdSaleAddress}</a></div></span><br/>
-                            SunIntensity CrowdSale Address<br/>Click to see on Etherscan</p>
+                <a href={"https://etherscan.io/address/" + this.props.crowdSaleAddress}>{this.props.crowdSaleAddress}</a></div></span>
+                </p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
                 <p>
-                            <span id="tokenprice" className="text-info"><div data-reactroot="">USD 1.50</div></span><br/>
+                            <span id="tokenprice" className="text-info"><div data-reactroot="">{this.props.priceInWei} wei</div></span><br/>
                                     Price per SunIntensity token</p>
                 <p></p></div></div>
-                <p>See instructions below on how to send tokens to this address</p>
+                <p>Crowdsale addresss can be found above. Follow instructions <a href="#how-to-join-the-token-sale">here</a> to purchase tokens</p>
                 <div className="row ">
                 <p>        <button onClick={this.props.handleBuy} className="btn btn-info btn-lg col-sm-4 col-sm-offset-4 ">Back to Token Info!</button></p></div></div>
         );

@@ -37,15 +37,18 @@ Then run,
     truffle migrate --network shareddev
 
 
-## To use the testrpc server setup on sunintensity for the web app
+## To use the test ethereum server setup on sunintensity for the web app
 
 We have setup a reverse proxy setup so that  https://sunintensity.com/t/ reaches the testrpc or other network running on port 8545 at that server. Either testrpc or geth can be run on port 8545 on that server to connect to ethereum
 
 in src/utils/getWeb3.js, ensure to use this url for the default case
 
+geth can be started using script in ethscripts/gethlocalnet.sh
 
 
-## To migrate smart contracts to the testnet/Ropsten network
+
+
+## To migrate smart contracts to the test network
 
 There are a few steps here:
 
@@ -74,7 +77,55 @@ There are a few steps here:
     }
 
 * Finally deploy contract using 
-    truffle migrate --network ropsten
+    truffle migrate --network shareddev
+
+output should look like this
+
+```
+macbookpro:sale-page binod$ truffle migrate --network shareddev
+Using network 'shareddev'.
+
+Address being deployed to is 0x7a7c3d133e9e4878fd55d9d9c86881f28ce9c139
+Address being deployed to is 0xb615331cd910e5a5ac527c47f727159611c3d833
+Address being deployed to is 0x7a7c3d133e9e4878fd55d9d9c86881f28ce9c139
+Address being deployed to is 0xb615331cd910e5a5ac527c47f727159611c3d833
+Running migration: 1_initial_migration.js
+  Replacing Migrations...
+Address being deployed to is 0x7a7c3d133e9e4878fd55d9d9c86881f28ce9c139
+  ... 0xc445d919cbf95f1d1db57843339c7858672687c412bc63c82207eea030cd75d0
+Address being deployed to is 0x2495237a10cac321e0d9c32ade9f42c0de314b32
+  Migrations: 0x2495237a10cac321e0d9c32ade9f42c0de314b32
+Saving successful migration to network...
+Address being deployed to is 0x7a7c3d133e9e4878fd55d9d9c86881f28ce9c139
+Address being deployed to is 0x2495237a10cac321e0d9c32ade9f42c0de314b32
+  ... 0xafba09cf55bfdad2ab6b36318f9c0e3bc5d31b025ecc84e08aef224fbad22c90
+Saving artifacts...
+Running migration: 2_deploy_contracts.js
+Account being used as admin 0x7a7c3d133e9e4878fd55d9d9c86881f28ce9c139
+  Replacing AssetToken...
+Address being deployed to is 0x7a7c3d133e9e4878fd55d9d9c86881f28ce9c139
+  ... 0xa2ed1bd63d3cec9f08aa647ab137364ce2f0541a8561e64cb8b6d8a10b6604a5
+Address being deployed to is 0x8db4a55e23e9f5f63162d9dbaf703d5b60f66359
+  AssetToken: 0x8db4a55e23e9f5f63162d9dbaf703d5b60f66359
+  Replacing CrowdSale...
+Address being deployed to is 0x7a7c3d133e9e4878fd55d9d9c86881f28ce9c139
+  ... 0x3025faa15ee42260110cd8046f02e3fff48c0690807f5479453026e2e053c0e1
+Address being deployed to is 0xbf46081b978ad92cf8e135c8e3c8afbafd365278
+  CrowdSale: 0xbf46081b978ad92cf8e135c8e3c8afbafd365278
+Saving successful migration to network...
+Address being deployed to is 0x7a7c3d133e9e4878fd55d9d9c86881f28ce9c139
+Address being deployed to is 0x2495237a10cac321e0d9c32ade9f42c0de314b32
+  ... 0x8a1fb23cb4247a02c11c9b42c501727d69368c38d5f19cd17170338fae77e976
+Saving artifacts...
+```
+
+
+
+## Viewing deployed contracts in Mist
+
+After deploying contracts to network, you can load them in Mist
+
+Get the abi part of the contract from build/contracts and paste it in Mist when using the 'Watch contract' feature
 
 
 
@@ -100,6 +151,10 @@ This will take you to a geth console from which you can access the ethereum setu
 ## To connect Ethereum Wallet (Mist) app to the test server
 
 Start Mist with rpc argument like this
+
+    /Applications/Ethereum\ Wallet.app/Contents/MacOS/Ethereum\ Wallet --rpc http://54.210.223.141:8545
+
+or
 
     /Applications/Ethereum\ Wallet.app/Contents/MacOS/Ethereum\ Wallet --rpc https://sunintensity.com/t/
 

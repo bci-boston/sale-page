@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.15;
  
 contract admined {
 	address public admin;
@@ -26,7 +26,7 @@ contract Token {
 	string public symbol;
 	uint8 public decimal; 
 	uint256 public totalSupply;
-	event Transfer(address indexed from, address indexed to, uint256 value);
+	event Transfer(address from, address to, uint256 value);
 
 
 	function Token(uint256 initialSupply, string tokenName, string tokenSymbol, uint8 decimalUnits){
