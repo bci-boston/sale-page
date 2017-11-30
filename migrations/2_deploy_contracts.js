@@ -9,7 +9,7 @@ console.log("Account being used as admin " + accounts[0]);
 
 // Create assetToken with initialsupply, and assign to accounts[0] as owner account
 deployer.deploy(AssetToken, 60000000, "SunIntensityToken", "SUNINTENSITY", 0, accounts[0]).then(function() {
-    return deployer.deploy(CrowdSaleContract, 1000, "http://sunintensity.com/crowdsale", accounts[0], 1000, 10000, AssetToken.address, 0.0047);
+    return deployer.deploy(CrowdSaleContract, 1000, "http://sunintensity.com/crowdsale", accounts[0], 1000, 10000, AssetToken.address, 1);
 
 })
 

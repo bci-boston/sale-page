@@ -43,7 +43,8 @@ contract CrowdSale {
         address abeneficiary,
         string url,
         uint _fundingMaximumTargetInEther, 
-        uint256 adeadline);
+        uint256 adeadline,
+        uint apriceInWei);
 
 
     modifier inState(State _state) {
@@ -103,7 +104,8 @@ contract CrowdSale {
             beneficiary,
             campaignUrl,
             fundingMaximumTargetInWei,
-            deadline);
+            deadline,
+            priceInWei);
     }
 
     function contribute()
