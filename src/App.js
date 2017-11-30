@@ -162,7 +162,7 @@ class SaleInfo extends Component {
                 <h3 className="text-center">SunIntensity Token Sale</h3>
                 <div className="row">
                 <div className="col-sm-4 text-center">
-                <p><span id="tokensforsale" className="text-info"><div data-reactroot="">{this.props.totalSupply}</div></span><br/>
+                <p><span id="tokensforsale" className="text-info"><div data-reactroot="">{this.props.totalSupply - this.props.soldTokens}</div></span><br/>
                             SunIntensity tokens for sale</p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
