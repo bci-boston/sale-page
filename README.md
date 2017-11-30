@@ -45,6 +45,17 @@ in src/utils/getWeb3.js, ensure to use this url for the default case
 
 geth can be started using script in ethscripts/gethlocalnet.sh
 
+To start geth to create local network
+
+1. Make sure ~/ethereum/localnetwork has a file called password.sec with the password to use for the accounts, such as 12341234
+2. Use the ethscripts/genesis.json file, initialize geth with 
+    geth --datadir=~/ethereum/localnetwork init genesis.json
+3. Create at least one account. The first one will be the contract owner or coinbase account
+    geth --datadir=~/ethereum/localnetwork account new
+    Repeat for as many accounts as you need. Use the password that matches the one in password.sec
+4. Now start geth with the ethscripts/gethlocalnet.sh
+    It should start and start to mine ethers
+5. Now you can connect using  geth attach https://sunintensity.com/t/ or using Mist like Mist --rpc https://sunintensity.com/t/
 
 
 
