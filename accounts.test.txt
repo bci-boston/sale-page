@@ -25,10 +25,12 @@ wallet: 0xA7cfD5074Eb8b58525942EA7637Ce7dcABa19c99
 password: 12341234
 
 
-AssetToken address: 0x0fb368795c051641a228131430a1c77ebe02dde5
+AssetToken address: 0x6f2e05052b2d439f609f38ff108b6d2ef8fce1f6
 
-Crowdsale address: 0x9c14fe521945dc7a7077fb5a5fc26bcb19656fb6
+Crowdsale address: 0x5d1b5e8e64e21851b8068c45300bcc44533a332c
 
+
+contribute function data: 0xd7bb99ba
 
 
 acc2: 0xE5632A9AD8DE3E9308825634E5b67e7B6d414c48
@@ -38,7 +40,11 @@ wallet: 0x314978869C7972AA2F589C9d0920Dce6012c8891
 
 
 
+———
 
+MyEtherWallet
+
+keystorefile: 
 
 
 

@@ -208,5 +208,12 @@ In the console, do these to fetch infrom from the contracts
 ```
 
 
+## How to get data for a particular method of the contract
+
+```
+  ct = Crowdsale.at(addressOfContract)
+  ct.contract.contribute.getData()
+```
+
 
 
