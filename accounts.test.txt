@@ -25,9 +25,9 @@ wallet: 0xA7cfD5074Eb8b58525942EA7637Ce7dcABa19c99
 password: 12341234
 
 
-AssetToken address: 0x6f2e05052b2d439f609f38ff108b6d2ef8fce1f6
+AssetToken address: 0x1954fb2e8973be540eb5c01f74a0db1d3acb140a 
 
-Crowdsale address: 0x5d1b5e8e64e21851b8068c45300bcc44533a332c
+Crowdsale address: 0x82756ef1e8215071fdc97b35aa0f180f7ff0580c
 
 
 contribute function data: 0xd7bb99ba

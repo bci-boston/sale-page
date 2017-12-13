@@ -159,20 +159,20 @@ class SaleInfo extends Component {
     render() {
         return (
             <div className="panel-body">
-                <h3 className="text-center">SunIntensity Token Sale</h3>
+                <h3 className="text-center">Power2Peer Token Sale</h3>
                 <div className="row">
                 <div className="col-sm-4 text-center">
                 <p><span id="tokensforsale" className="text-info"><div data-reactroot="">{this.props.totalSupply - this.props.soldTokens}</div></span><br/>
-                            SunIntensity tokens for sale</p>
+                            Power2Peer tokens for sale</p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
                 <p><span id="tokenssold" className="text-info"><div data-reactroot="">{this.props.soldTokens}</div></span><br/>
-                            SunIntensity tokens sold</p>
+                            Power2Peer tokens sold</p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
                 <p>
                             <span id="tokenprice" className="text-info"><div data-reactroot="">{this.props.priceInWei} wei</div></span><br/>
-                                    Price per SunIntensity token</p>
+                                    Price per Power2Peer token</p>
                 <p></p></div></div>
                 <p>Sale ends at block <span className="text-info ">[NUMBERS]</span>, approximately at Nov 13th 12pm EST. <span className="text-info ">[NUMBERS]</span> blocks remaining.</p>
                 <div className="row ">
@@ -186,11 +186,11 @@ class SaleActionView extends Component {
     render() {
         return (
             <div className="panel-body">
-                <h3 className="text-center">SunIntensity Token Sale</h3>
+                <h3 className="text-center">Power2Peer token Sale</h3>
                 <div className="row">
                 <div className="col-sm-4 text-center">
                 <p><span id="tokensforsale" className="text-info"><div data-reactroot="">{this.props.totalSupply}</div></span><br/>
-                            SunIntensity tokens for sale</p>
+                            Power2Peer tokens for sale</p>
                 <p></p></div>
                 <div className="col-sm-4 text-center">
                 <p><span id="tokenssold" className="text-info"><div data-reactroot="">
@@ -200,7 +200,7 @@ class SaleActionView extends Component {
                 <div className="col-sm-4 text-center">
                 <p>
                             <span id="tokenprice" className="text-info"><div data-reactroot="">{this.props.priceInWei} wei</div></span><br/>
-                                    Price per SunIntensity token</p>
+                                    Price per Power2Peer token</p>
                 <p></p></div></div>
                 <p>Crowdsale addresss can be found above. Follow instructions <a href="#how-to-join-the-token-sale">here</a> to purchase tokens</p>
                 <div className="row ">
