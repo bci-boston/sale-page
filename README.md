@@ -43,6 +43,10 @@ We have setup a reverse proxy setup so that  https://Power2Peer.com/t/ reaches t
 
 in src/utils/getWeb3.js, ensure to use this url for the default case
 
+To access server you can ssh to it like this (contact Eric for the pem file)
+
+    ssh -i ~/sunintensity.pem ubuntu@54.210.223.141
+
 geth can be started using script in ethscripts/gethlocalnet.sh
 
 To start geth to create local network
