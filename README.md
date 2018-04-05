@@ -37,9 +37,9 @@ Then run,
     truffle migrate --network shareddev
 
 
-## To use the test ethereum server setup on sunintensity for the web app
+## To use the test ethereum server setup on power2peer.com for the web app
 
-We have setup a reverse proxy setup so that  https://sunintensity.com/t/ reaches the testrpc or other network running on port 8545 at that server. Either testrpc or geth can be run on port 8545 on that server to connect to ethereum
+We have setup a reverse proxy setup so that  https://power2peer.com/t/ reaches the testrpc or other network running on port 8545 at that server. Either testrpc or geth can be run on port 8545 on that server to connect to ethereum
 
 in src/utils/getWeb3.js, ensure to use this url for the default case
 
@@ -55,7 +55,7 @@ To start geth to create local network
     Repeat for as many accounts as you need. Use the password that matches the one in password.sec
 4. Now start geth with the ethscripts/gethlocalnet.sh
     It should start and start to mine ethers
-5. Now you can connect using  geth attach https://sunintensity.com/t/ or using Mist like Mist --rpc https://sunintensity.com/t/
+5. Now you can connect using  geth attach https://power2peer.com/t/ or using Mist like Mist --rpc https://power2peer.com/t/
 
 
 
@@ -148,12 +148,12 @@ Get the abi part of the contract from build/contracts and paste it in Mist when 
 
     # check in the built package too, the build_webpack/ is in .gitignore so won't be committed
 
-    First delete the file 'built.react.package' on wordpress site, then upload this package to workdpress site via https://sunintensity.com/wp-admin/post.php?post=457&action=edit to replace that file
+    First delete the file 'built.react.package' on wordpress site, then upload this package to workdpress site via https://power2peer.com/wp-admin/post.php?post=457&action=edit to replace that file
 
 
 ## To attach a geth console against the remote ehtereum server on sunintensity
 
-    geth attach https://sunintensity.com/t/
+    geth attach https://power2peer.com/t/
 
 
 This will take you to a geth console from which you can access the ethereum setup
@@ -167,7 +167,7 @@ Start Mist with rpc argument like this
 
 or
 
-    /Applications/Ethereum\ Wallet.app/Contents/MacOS/Ethereum\ Wallet --rpc https://sunintensity.com/t/
+    /Applications/Ethereum\ Wallet.app/Contents/MacOS/Ethereum\ Wallet --rpc https://power2peer.com/t/
 
 Accept the warning dialog
 
