@@ -23,7 +23,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
             //var provider = new Web3.providers.HttpProvider('http://localhost:8042')
 
             // this maps to 'http://54.210.223.141:8545' via reverse proxy
-            var provider = new Web3.providers.HttpProvider('https://sunintensity.com/t/')
+            var provider = new Web3.providers.HttpProvider('https://power2peer.com/t/')
 
 
             web3 = new Web3(provider)
