@@ -20,7 +20,7 @@ then copy the build_webpack/ folder contents to a hosting location. The index.ht
 
 This will migrate all contracts as per migrations/ folder
 
-## To deploy contracts to the test network running on the sunintensity server
+## To deploy contracts to the test network running on the power2peer server
 
 Add something like this to truffle.js, make sure this points to the right address of the server running the testnet
 
@@ -151,7 +151,7 @@ Get the abi part of the contract from build/contracts and paste it in Mist when 
     First delete the file 'built.react.package' on wordpress site, then upload this package to workdpress site via https://power2peer.com/wp-admin/post.php?post=457&action=edit to replace that file
 
 
-## To attach a geth console against the remote ehtereum server on sunintensity
+## To attach a geth console against the remote ehtereum server on power2peer
 
     geth attach https://power2peer.com/t/
 
